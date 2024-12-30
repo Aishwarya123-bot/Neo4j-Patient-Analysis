@@ -37,3 +37,9 @@ MERGE (g:GlucoseLevel {level: glucose})
 MERGE (b:BMI {level: bmi})
 MERGE (g)-[:HAS_BMI]->(b)
 RETURN g.level AS GlucoseLevel, b.level AS BMILevel
+
+MATCH (p1:Patient)-[r]->(p2:Patient)
+RETURN p1, r, p2 LIMIT 25
+
+MATCH (p1:Patient)-[r:SIMILAR_PREGNANCIES]->(p2:Patient)
+RETURN p1, r, p2 LIMIT 25
